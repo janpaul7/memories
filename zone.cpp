@@ -1,0 +1,29 @@
+#include "zone.h"
+
+std::vector<Zone*> zoneContainer;
+
+Zone::Zone()
+{
+    zoneContainer.push_back(this);
+    SetZoneID(zoneContainer.size());
+}
+
+void Zone::SetZoneID(unsigned int zoneID)
+{
+    this->zoneID_m = zoneID;
+}
+
+unsigned int Zone::GetZoneID()
+{
+    return this->zoneID_m;
+}
+
+void Zone::SetZoneName(std::string zoneName)
+{
+    this->zoneName_m = zoneName;
+}
+
+std::string Zone::GetZoneName()
+{
+    return this->zoneName_m;
+}
