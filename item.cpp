@@ -20,7 +20,7 @@ unsigned int Item::GetItemID()
 
 void Item::SetItemName(std::string itemName)
 {
-    this->itemName_m = itemName;
+    this->itemName_m = "\033[1;33m" + itemName + "\033[1;0m";
 }
 
 std::string Item::GetItemName()
