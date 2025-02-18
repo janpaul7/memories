@@ -20,7 +20,7 @@ unsigned int Zone::GetZoneID()
 
 void Zone::SetZoneName(std::string zoneName)
 {
-    this->zoneName_m = zoneName;
+    this->zoneName_m = "\033[1;31m" + zoneName + "\033[1;0m";
 }
 
 std::string Zone::GetZoneName()
