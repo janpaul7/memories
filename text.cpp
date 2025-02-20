@@ -1,5 +1,7 @@
+#pragma once
 #include "text.h"
 
+std::atomic<bool> stopThread(false);
 std::vector<Text*> textContainer;
 
 void Sleepms(unsigned int ms)
@@ -13,13 +15,31 @@ Text::Text()
     SetTextID(textContainer.size());
 }
 
-void Text::PrintDelay(unsigned int ms)
+void Text::SkipDelayThread()
 {
-    for (std::string::size_type i = 0; i < GetTextContent().size(); ++i)
+    while(!(stopThread))
     {
-        std::cout << GetTextContent()[i];
-        Sleepms(GetmsPrintDelay());
+        if(_kbhit())
+        {
+            char ch = _getch();
+            this->msPrintDelay_m = 0;
+        }
     }
+}
+
+void Text::PrintDelay()
+{
+    unsigned int delay = this->msPrintDelay_m;
+    stopThread = false;
+    std::thread checkInput(&Text::SkipDelayThread, this);
+    for (std::string::size_type i = 0; i < this->textContent_m.size(); ++i)
+    {
+        std::cout << textContent_m[i];
+        Sleepms(this->msPrintDelay_m);
+    }
+    stopThread = true;
+    checkInput.join();
+    this->msPrintDelay_m = delay;
 }
 
 void Text::SetTextID(unsigned int textID)
