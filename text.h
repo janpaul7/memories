@@ -5,9 +5,10 @@
 #include <chrono>
 #include <thread>
 #include <atomic>
-#include <conio.h>
+#include <curses.h>
 
-class Text{
+class Text
+{
 private:
 unsigned int textID_m = 0;
 std::string textContent_m = "";
@@ -15,6 +16,7 @@ unsigned int msPrintDelay_m = 50;
 
 public:
 Text();
+~Text();
 
 void SkipDelayThread();
 void PrintDelay();
