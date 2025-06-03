@@ -5,6 +5,7 @@
 #include "zone.h"
 #include "spieler.h"
 
+void ZoneInit();
 
 int main()
 {    
@@ -24,7 +25,13 @@ int main()
     {
         currentPlayer.PrintCurrentZoneText();
         currentPlayer.AskForInput();
-        currentPlayer.CheckInput();
+        currentPlayer.CheckInput(currentPlayer.GetUserInput());
     }
     return 0;
+}
+
+void ZoneInit()
+{
+
+    return;
 }
