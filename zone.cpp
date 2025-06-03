@@ -42,6 +42,21 @@ Text Zone::GetZoneText()
     return this->zoneText_m;
 }
 
+void Zone::SetZoneTextMemory(Text zoneTextMemory)
+{
+    this->zoneTextMemory_m = zoneTextMemory;
+}
+
+Text Zone::GetZoneTextMemory()
+{
+    return this->zoneTextMemory_m;
+}
+
+void Zone::SetZoneTextUmschauen(Text zoneTextUmschauen)
+{
+    this->zoneTextUmschauen_m = zoneTextUmschauen;
+}
+
 
 void Zone::SetZoneItem(Item zoneItem)
 {
