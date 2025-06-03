@@ -15,13 +15,18 @@ Text::Text()
     SetTextID(textContainer.size());
 }
 
+Text::~Text()
+{
+
+}
+
 void Text::SkipDelayThread()
 {
     while(!(stopThread))
     {
-        if(_kbhit())
+        if(kbhit())
         {
-            char ch = _getch();
+            char ch = getch();
             this->msPrintDelay_m = 0;
         }
     }
@@ -41,6 +46,7 @@ void Text::PrintDelay()
     checkInput.join();
     this->msPrintDelay_m = delay;
 }
+
 
 void Text::SetTextID(unsigned int textID)
 {
