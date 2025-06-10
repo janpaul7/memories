@@ -23,14 +23,13 @@ unsigned int Zone::GetZoneID()
 
 void Zone::SetZoneName(std::string zoneName)
 {
-    this->zoneName_m = "\033[1;31m" + zoneName + "\033[1;0m";
+    this->zoneName_m = zoneName;
 }
 
 std::string Zone::GetZoneName()
 {
     return this->zoneName_m;
 }
-
 
 void Zone::SetZoneText(Text zoneText)
 {
@@ -57,19 +56,47 @@ void Zone::SetZoneTextUmschauen(Text zoneTextUmschauen)
     this->zoneTextUmschauen_m = zoneTextUmschauen;
 }
 
-
-void Zone::SetZoneItem(Item zoneItem)
+Text Zone::GetZoneTextUmschauen()
 {
-    this->zoneItem_m.push_back(zoneItem);
+    return this->zoneTextUmschauen_m;
 }
 
-Item Zone::GetZoneItem(std::string itemName)
+void Zone::SetzoneTextUmschauenItem1(Text zoneTextUmschauenItem1)
 {
-    for (Item i : this->zoneItem_m)
-    {
-        if (i.GetItemName() == itemName)
-        {
-            return i;
-        }
-    }
+    this->zoneTextUmschauenItem1_m = zoneTextUmschauenItem1;
+}
+
+Text Zone::GetzoneTextUmschauenItem1()
+{
+    return this->zoneTextUmschauenItem1_m;
+}
+
+void Zone::SetItem1Aufgehoben(bool aufgehoben)
+{
+    this->Item1Aufgehoben = aufgehoben;
+}
+
+bool Zone::GetItem1Aufgehoben()
+{
+    return this->Item1Aufgehoben;
+}
+
+void Zone::SetItem2Aufgehoben()
+{
+    this->Item2Aufgehoben = true;
+}
+
+bool Zone::GetItem2Aufgehoben()
+{
+    return this->Item2Aufgehoben;
+}
+
+void Zone::SetzoneTextUmschauenItem2(Text zoneTextUmschauenItem2)
+{
+    this->zoneTextUmschauenItem2_m = zoneTextUmschauenItem2;
+}
+
+Text Zone::GetzoneTextUmschauenItem2()
+{
+    return this->zoneTextUmschauenItem2_m;
 }
