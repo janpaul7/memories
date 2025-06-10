@@ -5,7 +5,7 @@
 #include <chrono>
 #include <thread>
 #include <atomic>
-#include <curses.h>
+#include <conio.h>
 
 class Text
 {
@@ -29,6 +29,5 @@ std::string GetTextContent();
 
 void SetmsPrintDelay(unsigned int msPrintDelay);
 unsigned int GetmsPrintDelay();
-
 
 };
