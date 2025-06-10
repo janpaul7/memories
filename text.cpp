@@ -22,11 +22,11 @@ Text::~Text()
 
 void Text::SkipDelayThread()
 {
-    while(!(stopThread))
+    while(!stopThread)
     {
-        if(kbhit())
+        if(_kbhit())
         {
-            char ch = getch();
+            char ch = _getch();
             this->msPrintDelay_m = 0;
         }
     }
