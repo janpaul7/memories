@@ -4,11 +4,17 @@
 #include "zone.h"
 #include "spieler.h"
 
+#include <windows.h>
+#include <stdio.h>
+
 void PrintMenu();
 void MenuButton(Spieler& currentPlayer);
+void setupConsole();
+void restoreConsole();
 
 int main()
-{      
+{   
+    setupConsole();
     std::setlocale(LC_ALL, "de_DE.UTF-8");
     //INITS
     //Spieler
@@ -339,6 +345,7 @@ int main()
             }
         }
     }
+    restoreConsole();
     return 0;
 }
 
@@ -357,5 +364,41 @@ void MenuButton(Spieler& currentPlayer)
     if(input != "1")
     {
         currentPlayer.PrintShutdown();
+    }
+}
+
+void setupConsole()
+{
+    DWORD outMode = 0;
+    stdoutHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    if(stdoutHandle == INVALID_HANDLE_VALUE)
+    {
+ 		exit(GetLastError());
+ 	}
+ 	
+ 	if(!GetConsoleMode(stdoutHandle, &outMode)) 
+    {
+ 		exit(GetLastError());
+ 	}
+ 
+ 	outModeInit = outMode;
+ 	
+     // Enable ANSI escape codes
+ 	outMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+ 
+ 	if(!SetConsoleMode(stdoutHandle, outMode)) 
+    {
+ 		exit(GetLastError());
+ 	}	
+}
+
+void restoreConsole()
+{
+    std::cout << "\x1b[0m";
+
+    if(!SetConsoleMode(stdoutHandle, outModeInit))
+    {
+        exit(GetLastError());
     }
 }
