@@ -12,6 +12,9 @@ void MenuButton(Spieler& currentPlayer);
 void setupConsole();
 void restoreConsole();
 
+static HANDLE stdoutHandle;
+statix DWORD outModeInit;
+
 int main()
 {   
     setupConsole();
