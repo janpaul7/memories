@@ -1,4 +1,5 @@
 #include <iostream>
+#include <clocale>
 #include "text.h"
 #include "zone.h"
 #include "spieler.h"
@@ -7,7 +8,8 @@ void PrintMenu();
 void MenuButton(Spieler& currentPlayer);
 
 int main()
-{    
+{      
+    std::setlocale(LC_ALL, "de_DE.UTF-8");
     //INITS
     //Spieler
     Spieler currentPlayer;
