@@ -285,11 +285,10 @@ int main()
                 if(currentPlayer.GetTerminalGeloest() == true && currentPlayer.GetKonsoleGeloest() == true)
                 {
                     betreten102.PrintDelay();
-                    std::string enter;
-                    std::cin >> enter;
+                    system("PAUSE");
                     SimulationStart.PrintDelay();
                     currentPlayer.PrintShutdown();
-                    std::cin >> enter;
+                    system("PAUSE");
                 }
 
                 else
